@@ -4,7 +4,7 @@ extends Node
 @onready var egg_label: Label = $UserInterface/EggLabel
 @onready var retry_label: Label = $UserInterface/Retry/Label
 @onready var egg_spawner_timer: Timer = $EggSpawner/Timer
-@onready var lose_player: AudioStreamPlayer3D = $LosePlayer
+@onready var lose_player: AudioStreamPlayer = $LosePlayer
 @onready var mob_timer: Timer = $MobTimer
 
 @export var mob_scene = load("res://Rock.tscn")

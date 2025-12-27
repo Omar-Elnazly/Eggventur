@@ -1,0 +1,11 @@
+AudioStreamPlayer3D
+CanvasLayer
+Label
+HSlider
+Button
+VBoxContainer
+Timer
+Node3D
+Path3D
+CollisionShape3D
+Area3D

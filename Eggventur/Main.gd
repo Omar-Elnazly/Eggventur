@@ -50,7 +50,7 @@ func _on_mob_timer_timeout():
 
 # 🥚 DIFFICULTY EVERY 10 EGGS
 func update_difficulty_by_eggs(eggs: int):
-	var stage := eggs / 10   
+	var stage := eggs / 5   
 
 	# Spawn faster every stage
 	mob_timer.wait_time = max(0.4, 1.5 - stage * 0.3)

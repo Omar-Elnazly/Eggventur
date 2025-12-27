@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1766846573
+::res://::1766848070
 Chicken.gd::GDScript::3771984741983883580::1766844772::0::1::::<>CharacterBody3D<><>0<>0<><>::
 Chicken.tscn::PackedScene::8436727591708492075::1766794448::0::1::::<><><>0<>0<><>::uid://bt0gbjqdcejsu::::res://Chicken.gd<>uid://85b2xv5i0kcv::::res://assets/Chicken/CHICKEN_chicken_catalan_tan_color_psd_37a4e69b.png<>uid://bk2dfqyclvufc::::res://assets/Chicken/CHICKEN_chicken_ao_psd_2176d656_orm_3482057004.png<>uid://bx2xwxd4quirb::::res://assets/Chicken/CHICKEN_chicken_normal_psd_e8c5b8f9.png<>uid://ybanif7x40nx::::res://assets/Music/arcade-ui-6-229503.mp3<>uid://kie0hpieu6sm::::res://assets/Music/game-bonus-144751.mp3
 Egg.gd::GDScript::1743964946784933829::1766785241::0::1::::<>Area3D<><>0<>0<><>::

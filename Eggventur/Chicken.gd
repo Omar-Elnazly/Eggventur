@@ -71,7 +71,7 @@ func collect_egg():
 	eggs_collected += 1
 	egg_label.text = "Eggs: %d" % eggs_collected
 
-	if eggs_collected % 10 == 0:
+	if eggs_collected % 5 == 0:
 		levelup_sound.play()
 	else:
 		egg_sound.play()

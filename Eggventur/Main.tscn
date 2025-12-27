@@ -138,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.025600143, 0, 0.9996613, 0, 1, 0, -0.9996613, 0, -0.025600143, 14, 0, -42.838203)
+transform = Transform3D(-0.025600139, 0, 0.9996612, 0, 1, 0, -0.9996612, 0, -0.025600139, 14, 0, -42.838203)
 rotation_mode = 1
 cubic_interp = false
 loop = false

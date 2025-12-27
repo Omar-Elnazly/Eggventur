@@ -10,7 +10,7 @@ signal hit
 
 @export var base_max_stamina := 100.0  
 @export var stamina_drain_rate := 25.0
-@export var stamina_regen_rate := 2.0
+@export var stamina_regen_rate := 4.0
 
 var max_stamina := 100.0
 var stamina := 100.0

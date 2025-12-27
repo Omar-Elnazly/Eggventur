@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://dypovwakhdvh8"]
+[gd_scene load_steps=21 format=3 uid="uid://dypovwakhdvh8"]
 
 [ext_resource type="Script" uid="uid://dw420o3v2u8v1" path="res://Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dsg2w2pxbtxpj" path="res://Chicken.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c0tovyanvd67e" path="res://assets/Ground/cobblestone_ground_-_highpoly.glb" id="3_3dxm6"]
+[ext_resource type="PackedScene" uid="uid://b2spkac1l8bop" path="res://Wall.tscn" id="3_wkp8b"]
 [ext_resource type="Theme" uid="uid://c72x3y3mcpcig" path="res://ui_theme.tres" id="4_gnyca"]
 [ext_resource type="FontFile" uid="uid://wr6v0asbbmc" path="res://assets/fonts/Montserrat-Medium.ttf" id="5_trn2v"]
 [ext_resource type="Script" uid="uid://bstu201ki3rdd" path="res://TimeLabel.gd" id="6"]
@@ -91,6 +92,18 @@ shape = SubResource("WorldBoundaryShape3D_i5n5q")
 transform = Transform3D(5, 2.98023e-07, -1.3026998e-14, 0, -2.1855695e-07, -5, -2.98023e-07, 5, -2.1855695e-07, -24.002745, 10, -41.901356)
 shape = SubResource("WorldBoundaryShape3D_i5n5q")
 
+[node name="Wall" parent="Walls" instance=ExtResource("3_wkp8b")]
+transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, -31.181816, -1.484628, -45.281586)
+
+[node name="Wall2" parent="Walls" instance=ExtResource("3_wkp8b")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, 11.866866, -1.4428892, -17.244001)
+
+[node name="Wall3" parent="Walls" instance=ExtResource("3_wkp8b")]
+transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09, -60.10495, -1.4428892, -17.244001)
+
+[node name="Wall4" parent="Walls" instance=ExtResource("3_wkp8b")]
+transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, -31.181816, -1.484628, 28.918411)
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.5000002, -0.77704847, 0.38235524, 0, 0.44150588, 0.89725834, -0.8660253, -0.44862935, 0.22075301, -20.10295, 18.704626, 3.8528786)
 shadow_enabled = true
@@ -122,7 +135,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.0086968, 0, 0.999943, 0, 1, 0, -0.999943, 0, -0.0086968, 14, 0, -42.838203)
+transform = Transform3D(-0.0086967945, 0, 0.99994236, 0, 1, 0, -0.99994236, 0, -0.0086967945, 14, 0, -42.838203)
 rotation_mode = 1
 cubic_interp = false
 loop = false

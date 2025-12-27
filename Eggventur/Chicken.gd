@@ -22,6 +22,7 @@ var eggs_collected := 0
 @onready var levelup_sound: AudioStreamPlayer3D = $LevelUpSound
 @onready var anim: AnimationPlayer = $Pivot/CHICKEN/AnimationPlayer
 @onready var pivot: Node3D = $Pivot
+@onready var golden_egg_sound: AudioStreamPlayer3D = $GoldenEggSound
 
 var was_on_floor := true
 
@@ -122,7 +123,10 @@ func collect_egg(value: int = 1):
 	if eggs_collected % 5 == 0:
 		levelup_sound.play()  # Just sound reward!
 	else:
-		egg_sound.play()
+		if value == 3:
+			golden_egg_sound.play()  # Special golden sound!
+		else:
+			egg_sound.play()  # Normal egg sound
 
 func die():
 	hit.emit()

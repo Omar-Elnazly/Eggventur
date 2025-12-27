@@ -1,0 +1,138 @@
+[gd_scene load_steps=12 format=3 uid="uid://q7w7sxmorrc6"]
+
+[ext_resource type="Script" uid="uid://dw420o3v2u8v1" path="res://Main.gd" id="1_b3dd4"]
+[ext_resource type="PackedScene" uid="uid://c0tovyanvd67e" path="res://assets/Ground/cobblestone_ground_-_highpoly.glb" id="2_ox7fi"]
+[ext_resource type="AudioStream" uid="uid://dta4mshakfq1k" path="res://assets/Music/healing-music-from-mother-gaia-166025.mp3" id="3_we2lv"]
+
+[sub_resource type="BoxShape3D" id="1"]
+size = Vector3(60, 2, 60)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_i5n5q"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m3njk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yutuu"]
+sky_material = SubResource("ProceduralSkyMaterial_m3njk")
+
+[sub_resource type="Environment" id="Environment_0tcge"]
+background_mode = 2
+sky = SubResource("Sky_yutuu")
+tonemap_mode = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cr5ed"]
+albedo_color = Color(0.635294, 0.211765, 0.0235294, 1)
+
+[sub_resource type="CylinderMesh" id="3"]
+material = SubResource("StandardMaterial3D_cr5ed")
+radial_segments = 24
+rings = 1
+
+[sub_resource type="Curve3D" id="5"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14, 0, -42.838203, 0, 0, 0, 0, 0, 0, -13, 0, -42.146763, 0, 0, 0, 0, 0, 0, -13, 0, 33.991753, 0, 0, 0, 0, 0, 0, 14, 0, 33.3398, 0, 0, 0, 0, 0, 0, 14, 0, -42.371475),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
+
+[node name="Main" type="Node"]
+script = ExtResource("1_b3dd4")
+
+[node name="Ground" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape" type="CollisionShape3D" parent="Ground"]
+shape = SubResource("1")
+
+[node name="Sketchfab_Scene" parent="Ground" instance=ExtResource("2_ox7fi")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, -4.8488607, 0)
+
+[node name="Walls" type="StaticBody3D" parent="."]
+editor_description = "These invisible walls are used to prevent the player from escaping the playable area.
+
+These walls use WorldBoundaryShape3D collision shapes, which are infinitely large planes
+(even though they look finite in the editor)."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, 1, 0, -1, 1.31134e-07, 0, 10, 12.302036)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(-4.37114e-08, 1, -1.31134e-07, 0, 1.31134e-07, 1, 1, 4.37114e-08, -5.73206e-15, -20.46446, 10, -4.7683716e-07)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(4.37114e-08, -1, 2.18557e-07, 3.82137e-15, -2.18557e-07, -1, 1, 4.37114e-08, -5.73206e-15, 21.688751, 10, -4.7683716e-07)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Walls"]
+transform = Transform3D(1, 5.96046e-08, -1.42109e-14, 3.82137e-15, -2.18557e-07, -1, -5.96046e-08, 1, -2.18557e-07, 9.53674e-07, 10, -18.000088)
+shape = SubResource("WorldBoundaryShape3D_i5n5q")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5, -0.777049, 0.382355, 0, 0.441506, 0.897258, -0.866025, -0.448629, 0.220753, 0, 12.5592, 14.7757)
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_blur = 1.5
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 40.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0tcge")
+
+[node name="CameraPivot" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0.183514, 0, 0)
+
+[node name="Camera" type="Camera3D" parent="CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, 0, 9.53674e-07, 19)
+projection = 1
+fov = 48.6
+size = 24.0
+far = 40.0
+
+[node name="Cylinders" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 0)
+
+[node name="MeshInstance" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, -42.31488)
+mesh = SubResource("3")
+
+[node name="MeshInstance3" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, -41.97182)
+mesh = SubResource("3")
+
+[node name="MeshInstance2" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21, 1, 33.820763)
+mesh = SubResource("3")
+
+[node name="MeshInstance4" type="MeshInstance3D" parent="Cylinders"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1, 33.36584)
+mesh = SubResource("3")
+
+[node name="SpawnPath" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.109680176, 1, 0)
+curve = SubResource("5")
+
+[node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
+transform = Transform3D(-0.025600117, 0, 0.9996603, 0, 1, 0, -0.9996603, 0, -0.025600117, 14, 0, -42.838203)
+rotation_mode = 1
+cubic_interp = false
+loop = false
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="BackgroundMusic" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("3_we2lv")
+unit_size = 2.0
+autoplay = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

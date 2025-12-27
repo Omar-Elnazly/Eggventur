@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c72x3y3mcpcig"]
+
+[ext_resource type="FontFile" uid="uid://wr6v0asbbmc" path="res://assets/fonts/Montserrat-Medium.ttf" id="1_touxu"]
+
+[resource]
+default_font = ExtResource("1_touxu")
+default_font_size = 50

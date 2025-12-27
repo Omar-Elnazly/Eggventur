@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvop8uibqhlk1"]
+
+[ext_resource type="AudioStream" uid="uid://c0cpbg635sdmb" path="res://assets/Music/roblox-minecraft-fortnite-video-game-music-358426.mp3" id="1_1a72i"]
+
+[node name="MusicPlayer" type="AudioStreamPlayer3D"]
+stream = ExtResource("1_1a72i")
+autoplay = true

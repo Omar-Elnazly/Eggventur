@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var egg_scene: PackedScene
+@export var egg_scene: PackedScene = load("res://Egg.tscn")
 @export var max_eggs := 10
 @export var wall_margin := 3.0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dypovwakhdvh8"]
+[gd_scene load_steps=20 format=3 uid="uid://dypovwakhdvh8"]
 
 [ext_resource type="Script" uid="uid://dw420o3v2u8v1" path="res://Main.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://dsg2w2pxbtxpj" path="res://Chicken.tscn" id="2"]
@@ -7,7 +7,6 @@
 [ext_resource type="FontFile" uid="uid://wr6v0asbbmc" path="res://assets/fonts/Montserrat-Medium.ttf" id="5_trn2v"]
 [ext_resource type="Script" uid="uid://bstu201ki3rdd" path="res://TimeLabel.gd" id="6"]
 [ext_resource type="Script" uid="uid://dptirid8d36k1" path="res://EggSpawner.gd" id="6_3dxm6"]
-[ext_resource type="PackedScene" uid="uid://bxeq2stu4wwq0" path="res://Egg.tscn" id="7_lgr22"]
 [ext_resource type="AudioStream" uid="uid://c6fnq8rin7cjb" path="res://assets/Music/game-over-417465.mp3" id="9_03owx"]
 [ext_resource type="PackedScene" uid="uid://cvop8uibqhlk1" path="res://MusicPlayer.tscn" id="10_wkp8b"]
 
@@ -139,7 +138,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.02560015, 0, 0.9996616, 0, 1, 0, -0.9996616, 0, -0.02560015, 14, 0, -42.838203)
+transform = Transform3D(-0.025600143, 0, 0.9996613, 0, 1, 0, -0.9996613, 0, -0.025600143, 14, 0, -42.838203)
 rotation_mode = 1
 cubic_interp = false
 loop = false
@@ -204,8 +203,6 @@ text = "Eggs: 0"
 
 [node name="EggSpawner" type="Node3D" parent="."]
 script = ExtResource("6_3dxm6")
-egg_scene = ExtResource("7_lgr22")
-max_eggs = 3
 
 [node name="Timer" type="Timer" parent="EggSpawner"]
 wait_time = 3.0

@@ -2,15 +2,19 @@ extends Node
 
 @onready var time_label: Label = $UserInterface/TimeLabel
 @onready var egg_label: Label = $UserInterface/EggLabel
-@onready var retry_label: Label = $UserInterface/Retry/Label   # ← change "Label" to your actual label name inside Retry
-@onready var egg_spawner_timer: Timer = $EggSpawner/Timer      # ← this stops eggs from spawning
-@onready var lose_player: AudioStreamPlayer3D = $LosePlayer  # or $UserInterface/LosePlayer
+@onready var retry_label: Label = $UserInterface/Retry/Label
+@onready var egg_spawner_timer: Timer = $EggSpawner/Timer
+@onready var lose_player: AudioStreamPlayer3D = $LosePlayer
+@onready var mob_timer: Timer = $MobTimer
+
 @export var mob_scene = load("res://Rock.tscn")
-var mob_min_speed := 10.0
-var mob_max_speed := 18.0
+
+var mob_min_speed := 6.0
+var mob_max_speed := 10.0
 
 func _ready():
 	$MusicPlayer.play()
+
 	if RenderingServer.get_current_rendering_method() == "gl_compatibility":
 		RenderingServer.directional_soft_shadow_filter_set_quality(
 			RenderingServer.SHADOW_QUALITY_SOFT_HIGH
@@ -24,11 +28,12 @@ func _ready():
 
 	$UserInterface/Retry.hide()
 
+	# Start at EASY
+	update_difficulty_by_eggs(0)
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept") and $UserInterface/Retry.visible:
 		get_tree().reload_current_scene()
-
 
 func _on_mob_timer_timeout():
 	var mob = mob_scene.instantiate()
@@ -42,32 +47,34 @@ func _on_mob_timer_timeout():
 	mob.initialize(mob_spawn_location.position, player_position)
 
 	add_child(mob)
-	
-func speed_up_rocks():
-	# Make rocks spawn faster (reduce timer by 0.3 sec)
-	$MobTimer.wait_time -= 0.3
-	# Prevent timer from going too low or negative
-	if $MobTimer.wait_time < 0.3:
-		$MobTimer.wait_time = 0.3
-	
-	# Make future rocks move faster (increase their speed range)
-	# These values are used when spawning new rocks
-	mob_min_speed += 3.0
-	mob_max_speed += 3.0
 
+# 🥚 DIFFICULTY EVERY 10 EGGS
+func update_difficulty_by_eggs(eggs: int):
+	var stage := eggs / 10   
+
+	# Spawn faster every stage
+	mob_timer.wait_time = max(0.4, 1.5 - stage * 0.3)
+
+	# Rocks get faster every stage
+	mob_min_speed = 6.0 + stage * 3.0
+	mob_max_speed = 10.0 + stage * 4.0
 
 func _on_player_hit():
 	$MusicPlayer.stop()
-	lose_player.play()         # ← Plays lose music/sound
-	
-	$MobTimer.stop()                   # stops rocks
-	egg_spawner_timer.stop() 
-	
-	# Hide the top-left HUD
+	lose_player.play()
+
+	mob_timer.stop()
+	egg_spawner_timer.stop()
+
 	time_label.hide()
 	egg_label.hide()
-	
-	# Show final score on Game Over screen
-	retry_label.text = "Game Over!\nEggs: " + str($Player.eggs_collected) + "\nTime: " + time_label.text + "\n\nPress Enter to Retry"
-	
+
+	retry_label.text = (
+		"Game Over!\nEggs: "
+		+ str($Player.eggs_collected)
+		+ "\nTime: "
+		+ time_label.text
+		+ "\n\nPress Enter to Retry"
+	)
+
 	$UserInterface/Retry.show()

@@ -5,14 +5,15 @@ signal hit
 @export var speed := 14.0
 @export var jump_impulse := 20.0
 @export var fall_acceleration := 75.0
+
 var eggs_collected := 0
+
 @onready var egg_label: Label = get_node("/root/Main/UserInterface/EggLabel")
 @onready var egg_sound: AudioStreamPlayer3D = $EggSound
 @onready var levelup_sound: AudioStreamPlayer3D = $LevelUpSound
 @onready var anim: AnimationPlayer = $Pivot/CHICKEN/AnimationPlayer
 
 var was_on_floor := true
-
 
 func _physics_process(delta):
 	var direction := Vector3.ZERO
@@ -31,7 +32,6 @@ func _physics_process(delta):
 	if direction != Vector3.ZERO:
 		direction = direction.normalized()
 		basis = Basis.looking_at(direction)
-
 		if on_floor:
 			play_anim("walk01", 2.5)
 	else:
@@ -53,7 +53,6 @@ func _physics_process(delta):
 
 	was_on_floor = on_floor
 
-	# 🔴 ANY touch with rock = death
 	for i in range(get_slide_collision_count()):
 		var collider = get_slide_collision(i).get_collider()
 		if collider and collider.is_in_group("mob"):
@@ -62,23 +61,23 @@ func _physics_process(delta):
 
 	rotation.x = PI / 6 * velocity.y / jump_impulse
 
-
 func play_anim(name: String, speed_scale := 1.0):
 	if anim.current_animation != name:
 		anim.play(name)
 	anim.speed_scale = speed_scale
-	
+
+# 🥚 EGG COLLECT
 func collect_egg():
 	eggs_collected += 1
+	egg_label.text = "Eggs: %d" % eggs_collected
+
 	if eggs_collected % 10 == 0:
 		levelup_sound.play()
 	else:
-		egg_sound.play()  
-	egg_label.text = "Eggs: %d" % eggs_collected
-	if eggs_collected %10==0:
-		var main = get_node("/root/Main")
-		main.speed_up_rocks()
-	
+		egg_sound.play()
+
+	var main = get_node("/root/Main")
+	main.update_difficulty_by_eggs(eggs_collected)
 
 func die():
 	hit.emit()

@@ -109,8 +109,8 @@ func update_stamina_bar():
 	stamina_bar.value = (stamina / max_stamina) * 100.0
 
 # FIXED: Gradual max_stamina growth + NO REFILL = NO JUMPS!
-func collect_egg():
-	eggs_collected += 1
+func collect_egg(value: int = 1):
+	eggs_collected += value
 	egg_label.text = "Eggs: %d" % eggs_collected
 	
 	# Update max_stamina GRADUALLY every egg

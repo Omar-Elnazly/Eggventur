@@ -95,11 +95,12 @@ text = "CONTROLS
 
 Move: ← → ↑ ↓ or W A S D
 Jump: SPACE
+Sprint : Shift
 
 Collect eggs 🥚
 Avoid rocks 🪨
 
-Every 10 eggs = faster rocks!"
+Every 5 eggs = faster rocks!"
 horizontal_alignment = 1
 
 [node name="PlayButton" type="Button" parent="UI"]

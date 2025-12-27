@@ -16,18 +16,6 @@ size = Vector3(80.19556, 2, 77.26184)
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_i5n5q"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m3njk"]
-sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
-
-[sub_resource type="Sky" id="Sky_yutuu"]
-sky_material = SubResource("ProceduralSkyMaterial_m3njk")
-
-[sub_resource type="Environment" id="Environment_0tcge"]
-background_mode = 2
-sky = SubResource("Sky_yutuu")
-tonemap_mode = 4
-
 [sub_resource type="Curve3D" id="5"]
 _data = {
 "points": PackedVector3Array(0, 0, 0, 0, 0, 0, 14, 0, -42.838203, 0, 0, 0, 0, 0, 0, -65.50098, 0, -42.146763, 0, 0, 0, 0, 0, 0, -60.731407, 0, 33.991753, 0, 0, 0, 0, 0, 0, 14, 0, 33.3398, 0, 0, 0, 0, 0, 0, 14, 0, -42.371475),
@@ -48,6 +36,18 @@ bg_color = Color(0.1764706, 0.1764706, 0.1764706, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wkp8b"]
 bg_color = Color(0.26666668, 0.53333336, 1, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_m3njk"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_yutuu"]
+sky_material = SubResource("ProceduralSkyMaterial_m3njk")
+
+[sub_resource type="Environment" id="Environment_0tcge"]
+background_mode = 2
+sky = SubResource("Sky_yutuu")
+tonemap_mode = 4
 
 [node name="Main" type="Node"]
 script = ExtResource("1")
@@ -104,19 +104,6 @@ transform = Transform3D(-4.371139e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.371139e-09
 [node name="Wall4" parent="Walls" instance=ExtResource("3_wkp8b")]
 transform = Transform3D(-0.1, 0, 8.742278e-09, 0, 0.1, 0, -8.742278e-09, 0, -0.1, -31.181816, -1.484628, 28.918411)
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.5000002, -0.77704847, 0.38235524, 0, 0.44150588, 0.89725834, -0.8660253, -0.44862935, 0.22075301, -20.10295, 18.704626, 3.8528786)
-shadow_enabled = true
-shadow_bias = 0.04
-shadow_blur = 1.5
-directional_shadow_mode = 0
-directional_shadow_fade_start = 1.0
-directional_shadow_max_distance = 40.0
-directional_shadow_pancake_size = 40.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_0tcge")
-
 [node name="Player" parent="." instance=ExtResource("2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0262146, 3.259978, 0)
 
@@ -130,19 +117,27 @@ fov = 48.6
 size = 24.0
 far = 40.0
 
+[node name="EggSpawner" type="Node3D" parent="."]
+script = ExtResource("6_3dxm6")
+max_eggs = 5
+
+[node name="Timer" type="Timer" parent="EggSpawner"]
+wait_time = 3.0
+autostart = true
+
+[node name="GoldenTimer" type="Timer" parent="EggSpawner"]
+wait_time = 30.0
+autostart = true
+
 [node name="SpawnPath" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("5")
 
 [node name="SpawnLocation" type="PathFollow3D" parent="SpawnPath"]
-transform = Transform3D(-0.0086967945, 0, 0.99994236, 0, 1, 0, -0.99994236, 0, -0.0086967945, 14, 0, -42.838203)
+transform = Transform3D(-0.008696791, 0, 0.99994195, 0, 1, 0, -0.99994195, 0, -0.008696791, 14, 0, -42.838203)
 rotation_mode = 1
 cubic_interp = false
 loop = false
-
-[node name="MobTimer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
 
 [node name="UserInterface" type="Control" parent="."]
 layout_mode = 3
@@ -221,22 +216,31 @@ offset_right = 241.0
 offset_bottom = 877.0
 text = "Stamina"
 
-[node name="EggSpawner" type="Node3D" parent="."]
-script = ExtResource("6_3dxm6")
-max_eggs = 5
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.5000002, -0.77704847, 0.38235524, 0, 0.44150588, 0.89725834, -0.8660253, -0.44862935, 0.22075301, -20.10295, 18.704626, 3.8528786)
+shadow_enabled = true
+shadow_bias = 0.04
+shadow_blur = 1.5
+directional_shadow_mode = 0
+directional_shadow_fade_start = 1.0
+directional_shadow_max_distance = 40.0
+directional_shadow_pancake_size = 40.0
 
-[node name="Timer" type="Timer" parent="EggSpawner"]
-wait_time = 3.0
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_0tcge")
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
 autostart = true
 
-[node name="LosePlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("9_03owx")
+[node name="DeathCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, -30.4784, 29.172077, 6.9959755)
 
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_wkp8b")
 
-[node name="DeathCamera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.34202015, 0.9396926, 0, -0.9396926, 0.34202015, -30.4784, 29.226261, -13.978031)
+[node name="LosePlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_03owx")
 
 [connection signal="hit" from="Player" to="." method="_on_player_hit"]
 [connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

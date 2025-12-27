@@ -2,6 +2,8 @@ extends Node
 
 @onready var time_label: Label = $UserInterface/TimeLabel
 @onready var egg_label: Label = $UserInterface/EggLabel
+@onready var stamina_bar: ProgressBar = $UserInterface/StaminaBar
+@onready var stamina_label: Label = $UserInterface/StaminaLabel
 @onready var retry_label: Label = $UserInterface/Retry/Label
 @onready var egg_spawner_timer: Timer = $EggSpawner/Timer
 @onready var lose_player: AudioStreamPlayer = $LosePlayer
@@ -69,6 +71,9 @@ func _on_player_hit():
 	time_label.hide()
 	egg_label.hide()
 
+	stamina_bar.hide()
+	stamina_label.hide()
+	
 	retry_label.text = (
 		"Game Over!\nEggs: "
 		+ str($Player.eggs_collected)

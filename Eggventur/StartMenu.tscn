@@ -97,7 +97,9 @@ Move: ← → ↑ ↓ or W A S D
 Jump: SPACE
 Sprint : Shift
 
-Collect eggs 🥚
+Collect :
+Normal Egg 🥚+1
+Golden Egg ✨+3
 Avoid rocks 🪨
 
 Every 5 eggs = faster rocks!"

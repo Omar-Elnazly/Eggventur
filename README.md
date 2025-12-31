@@ -2,20 +2,18 @@
 
 A 3D survival adventure game where you play as a brave chicken navigating a dangerous world. Dodge rocks, collect eggs, and manage your stamina to survive as long as possible!
 
----
 
-## 🎮 Game Overview
+## Game Overview
 
 **Eggventur** is a third-person survival adventure game built using **Godot Engine**.  
 You control a chicken in a hostile environment where rocks are thrown at you. Your goal is to collect as many eggs as possible while avoiding obstacles.
 
 - 🥚 Normal eggs give **1 point**
-- 🥇 Golden eggs give **3 points**
+- ✨ Golden eggs give **3 points**
 - Difficulty increases as you collect more eggs
 
----
 
-## ✨ Features
+## Features
 
 - **Dynamic Stamina System**  
   Sprint to escape rocks, but stamina drains and regenerates slowly over time.
@@ -32,9 +30,8 @@ You control a chicken in a hostile environment where rocks are thrown at you. Yo
 - **Visual Polish**  
   Real-time shadows, smooth animations, and tilt effects for immersive gameplay.
 
----
 
-## 🕹️ Controls
+## Controls
 
 | Action         | Key(s)              |
 |----------------|---------------------|
@@ -43,9 +40,8 @@ You control a chicken in a hostile environment where rocks are thrown at you. Yo
 | Sprint         | Shift               |
 | Collect Eggs   | Walk over them      |
 
----
 
-## 📦 Installation & Running
+## Installation & Running
 
 ### Prerequisites
 - Godot Engine **4.x**
@@ -59,9 +55,8 @@ You control a chicken in a hostile environment where rocks are thrown at you. Yo
 4. Navigate to the cloned folder and select `project.godot`
 5. Press **F5** or click **Play** to run the game
 
----
 
-## 🧠 Game Mechanics
+## Game Mechanics
 
 ### Stamina
 - Increases by **6%** over time when walking or idle
@@ -85,9 +80,8 @@ You control a chicken in a hostile environment where rocks are thrown at you. Yo
   - Rock speed
   - Spawn rate
 
----
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Engine:** Godot 4.x  
 - **Language:** GDScript  
@@ -95,9 +89,8 @@ You control a chicken in a hostile environment where rocks are thrown at you. Yo
 - **Audio:** Pixabay Sound Effects  
 - **Version Control:** Git & GitHub  
 
----
 
-## 📁 Project Structure
+## Project Structure
 
 Key scripts include:
 
@@ -107,9 +100,8 @@ Key scripts include:
 - `Main.gd` – Game manager and difficulty scaling  
 - `StartMenu.gd` – Menu navigation and settings  
 
----
 
-## 👨‍💻 Team
+## Team
 
 | Name                     | Role |
 |--------------------------|------|
@@ -117,7 +109,6 @@ Key scripts include:
 | Omar Sayed Abdel-Hakam   | Lighting, shaders, textures |
 | Ziad Elsayed Fouad       | Level design, 3D model importing, report |
 
----
 
 ## 🖼️ Screenshots
 
@@ -127,14 +118,13 @@ Key scripts include:
 
 - <img width="1595" height="896" alt="image" src="https://github.com/user-attachments/assets/5816592d-7573-47c0-908c-6a930f36c08f" />
 
----
 
-## 📄 License
+
+## License
 
 This project is for **educational purposes** as part of a Computer Graphics course.  
 All third-party assets are used under their respective licenses.
 
----
 
 ## 🙏 Acknowledgements
 
@@ -142,7 +132,6 @@ All third-party assets are used under their respective licenses.
 - **Sound Effects:** Pixabay  
 - **Engine:** Godot  
 
----
 
 Enjoy the game!  
 Collect eggs, avoid rocks, and see how long you can survive! 🐔🥚
